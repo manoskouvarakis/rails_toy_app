@@ -13,7 +13,9 @@ class UsersController < ApplicationController
   end
 
   def show
+    #@user = User.includes(:movies).find(params[:id])
     @user = User.find(params[:id])
+    @movies = @user.movies.all
   end
 
   def create

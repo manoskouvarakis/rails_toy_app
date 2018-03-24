@@ -2,4 +2,7 @@
 	<h2><%= movie.title %></h2>            
   <p><%= movie.content %></p>
   <p>Posted by <span class="user"><%= link_to movie.user.name, movie.user %></span> <%= time_ago_in_words(movie.created_at) %> ago.</p>
+  <% if current_user?(movie.user) %>
+    	| <%= link_to "delete", movie, method: :delete, data: { confirm: "You sure?" } %>
+	<% end %>
 </li>
