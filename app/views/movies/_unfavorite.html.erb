@@ -1,0 +1,6 @@
+<%= form_for(current_user.favorites.find_by(movie_id: movie.id),
+             html: { method: :delete }, remote: true) do |f| %>
+<%= button_tag(type: "submit", class: "btn", name: "Unfavorite", value: "conceal") do %>
+  <span class="glyphicon glyphicon-heart" style="color:red"></span>
+<% end %> 
+<% end %>

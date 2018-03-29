@@ -1,0 +1,7 @@
+<div id="favorite_form-<%= movie.id %>">
+	<% if current_user.favorite?(movie) %>
+	<%= render 'movies/unfavorite', movie: movie %>
+	<% else %>
+	<%= render 'movies/favorite', movie: movie %>
+	<% end %>
+</div>

@@ -1,0 +1,8 @@
+<% provide(:title, 'Favorites') %>
+<h1>Favorites</h1>
+
+<ul class="list-group favorites">
+	<% @favorites.each do |favorite| %>
+		<%= render 'movies/movie', movie: favorite.movie %>
+	<% end %>
+</ul>

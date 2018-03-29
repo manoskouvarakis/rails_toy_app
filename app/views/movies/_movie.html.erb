@@ -1,8 +1,9 @@
 <li id="movie-<%= movie.id %>" class="list-group-item" style="margin-bottom: 10px;">
+	<%= render 'movies/favorite_form', movie: movie if logged_in? %>
 	<h2><%= movie.title %></h2>            
   <p><%= movie.content %></p>
-  <p>Posted by <span class="user"><%= link_to movie.user.name, movie.user %></span> <%= time_ago_in_words(movie.created_at) %> ago.</p>
+  <p style="font-style: italic">Posted by <span class="user"><%= link_to movie.user.name, movie.user %></span> <%= time_ago_in_words(movie.created_at) %> ago.</p>
   <% if current_user?(movie.user) %>
-    	| <%= link_to "delete", movie, method: :delete, data: { confirm: "You sure?" } %>
+		<%= link_to "delete", movie, method: :delete, class: "btn btn-danger", data: { confirm: "You sure?" } %>
 	<% end %>
 </li>
