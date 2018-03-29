@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   has_many :movies, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_movies, through: :favorites, source: :movie
 
   attr_accessor :remember_token
 
@@ -44,4 +46,20 @@ class User < ApplicationRecord
   def forget
     update_attribute(:remember_digest, nil)
   end
+
+  # Favorites a movie.
+  def favorite(movie)
+    favorite_movies << movie
+  end
+
+  # Unfavorites a movie.
+  def unfavorite(movie)
+    favorite_movies.delete(movie)
+  end
+
+  # Returns true if the current user has favorite on the movie.
+  def favorite?(movie)
+    favorite_movies.include?(movie)
+  end
+
 end

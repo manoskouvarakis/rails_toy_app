@@ -1,16 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+m1:
   title: Title 1
   content: MyText
   created_at: <%= 10.minutes.ago %>
 
-two:
+m2:
   title: Title 2
   content: MyText
   created_at: <%= 5.hours.ago %>
 
-two:
+m3:
   title: Title 3
   content: MyText
   created_at: <%= 2.hours.ago %>
