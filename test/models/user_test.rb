@@ -74,4 +74,16 @@ class UserTest < ActiveSupport::TestCase
       @user.destroy
     end
   end
+
+  test "should follow and unfollow a user" do
+    michael  = users(:michael)
+    movie   = movies(:m3)
+
+    assert_not michael.favorite?(movie)
+    
+    michael.favorite(movie)
+    assert michael.favorite?(movie)
+    michael.unfavorite(movie)
+    assert_not michael.favorite?(movie)
+  end
 end
