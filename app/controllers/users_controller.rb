@@ -49,20 +49,16 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  def favorites
+    @user = User.find(params[:id])
+    @favorites = @user.favorites.includes(:movie)
+  end
+
   private
 
     def user_params
       params.require(:user).permit(:name, :email, :password,
                                    :password_confirmation)
-    end
-
-    # Confirms a logged-in user.
-    def logged_in_user
-      unless logged_in?
-        store_location
-        flash[:danger] = "Please log in."
-        redirect_to login_url
-      end
     end
 
     # Confirms the correct user.
